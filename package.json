@@ -1,0 +1,51 @@
+{
+  "name": "@bwnl/button",
+  "version": "1.0.0",
+  "description": ":chestnut: Confirm Action",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SudoDotDog/BWNL-Button.git"
+  },
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SudoDotDog/BWNL-Button/issues"
+  },
+  "homepage": "https://github.com/SudoDotDog/BWNL-Button#readme",
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@sudoo/io": "^1.6.1",
+    "@sudoo/mock": "^1.2.0",
+    "@sudoo/react-force": "^1.6.2",
+    "@sudoo/react-force-dev": "^1.6.2",
+    "@sudoo/triforce": "^2.0.4",
+    "docz": "^1.3.2",
+    "docz-theme-default": "^1.2.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "reporter": [
+      "json",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "require": [
+      "./test/tshook.js"
+    ],
+    "sourceMap": true
+  }
+}
