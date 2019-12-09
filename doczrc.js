@@ -1,11 +1,11 @@
 /**
  * @author WMXPY
- * @namespace Boundary
+ * @namespace Button
  * @description DOCZ_RC
  */
 
 export default {
-    title: 'BWNL Error Boundary',
+    title: 'BWNL Button',
     codeSandbox: false,
     typescript: true,
 }
