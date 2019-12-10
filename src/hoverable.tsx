@@ -9,6 +9,7 @@ import * as React from "react";
 export type HoverableProps = {
 
     readonly render?: React.ReactNode;
+    readonly position?: 'top-left' | 'bottom-right';
 };
 
 export type HoverableStates = {
@@ -99,33 +100,48 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
 
     private _getPositionX(x: number): number {
 
-        const viewWidth: number = window.innerWidth;
-
         if (!this._ref) {
             return x;
         }
 
         const width: number = this._ref.clientWidth || 0;
 
-        if (viewWidth - x > width) {
-            return x;
+        if (this.props.position === 'bottom-right') {
+
+            const viewWidth: number = window.innerWidth;
+            if (viewWidth - x > width) {
+                return x;
+            }
+            return x - width;
         } else {
+
+            if (x < width) {
+                return x;
+            }
             return x - width;
         }
     }
 
     private _getPositionY(y: number): number {
 
-        const viewHeight: number = window.innerHeight;
-        const height: number = this._ref.clientHeight || 0;
-
         if (!this._ref) {
             return y;
         }
 
-        if (viewHeight - y > height) {
-            return y;
+        const height: number = this._ref.clientHeight || 0;
+
+        if (this.props.position === 'bottom-right') {
+
+            const viewHeight: number = window.innerHeight;
+            if (viewHeight - y > height) {
+                return y;
+            }
+            return y - height;
         } else {
+
+            if (y < height) {
+                return y;
+            }
             return y - height;
         }
     }
