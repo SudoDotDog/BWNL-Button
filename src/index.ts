@@ -10,5 +10,6 @@ Register.register();
 
 export * from "./banner";
 export * from "./hold";
+export * from "./hoverable";
 export * from "./widgets";
 

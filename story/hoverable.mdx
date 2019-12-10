@@ -1,0 +1,27 @@
+---
+name: Hoverable
+---
+
+import { Hoverable } from "../src/index";
+import { Playground } from "docz";
+
+# Hoverable
+
+<Playground>
+  <Hoverable
+    render={<div style={{
+        height: '200px',
+        width: '200px',
+        backgroundColor: 'red',
+    }}>
+        Hover Overlay
+    </div>}
+  >
+    <div style={{
+        backgroundColor: 'lightblue',
+        height: '200px',
+    }}>
+        Something
+    </div>
+  </Hoverable>
+</Playground>
