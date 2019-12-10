@@ -1,0 +1,41 @@
+---
+name: Title
+menu: Widgets
+---
+
+import { Widgets } from "../../src";
+import { Playground } from "docz";
+import { createChance } from "../mock/chance";
+
+# Title
+
+## Without Icon
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Title
+      title="Great Title"
+    >
+      {createChance().paragraph()}
+    </Widgets.Title>
+  </div>
+</Playground>
+
+## With Icon
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Title
+      title="Great Title"
+      icon={<img
+        style={{width: '100%'}}
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg"
+      />}
+      iconContainerStyle={{
+        backgroundColor: 'rgba(45, 45, 45, 0.2)'
+      }}
+    >
+      {createChance().paragraph()}
+    </Widgets.Title>
+  </div>
+</Playground>

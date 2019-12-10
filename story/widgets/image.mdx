@@ -1,0 +1,20 @@
+---
+name: Image
+menu: Widgets
+---
+
+import { Widgets } from "../../src";
+import { Playground } from "docz";
+import { createChance } from "../mock/chance";
+
+# Image
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Image
+      src="https://lonerwolf.com/wp-content/uploads/2017/08/difference-between-fate-and-destiny-1-min.jpg"
+    >
+      {createChance().paragraph()}
+    </Widgets.Image>
+  </div>
+</Playground>
