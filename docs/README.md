@@ -6,3 +6,5 @@
 [![downloads](https://img.shields.io/npm/dm/@bwnl/button.svg)](https://www.npmjs.com/package/@bwnl/button)
 
 :chestnut: Confirm Action
+
+Inspired by Destiny 2

@@ -7,4 +7,4 @@
 
 import * as Chance from "chance";
 
-export const chance: Chance.Chance = new Chance('BWNL-Button');
+export const createChance: () => Chance.Chance = () => new Chance('BWNL-Button');

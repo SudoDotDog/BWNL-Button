@@ -4,7 +4,7 @@ name: Widgets
 
 import { Widgets } from "../src/index";
 import { Playground } from "docz";
-import { chance } from "./mock/chance";
+import { createChance } from "./mock/chance";
 
 # Widgets
 
@@ -22,7 +22,19 @@ import { chance } from "./mock/chance";
         backgroundColor: 'rgba(45, 45, 45, 0.2)'
       }}
     >
-      {chance.paragraph()}
+      {createChance().paragraph()}
     </Widgets.Title>
+  </div>
+</Playground>
+
+## Image
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Image
+      src="https://lonerwolf.com/wp-content/uploads/2017/08/difference-between-fate-and-destiny-1-min.jpg"
+    >
+      {createChance().paragraph()}
+    </Widgets.Image>
   </div>
 </Playground>
