@@ -9,6 +9,8 @@ import { createChance } from "../mock/chance";
 
 # Description
 
+## Without Icon
+
 <Playground>
   <div style={{backgroundColor: 'lightblue'}}>
     <Widgets.Description
@@ -24,3 +26,24 @@ import { createChance } from "../mock/chance";
     />
   </div>
 </Playground>
+
+## With Icon
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Description
+      title={createChance().word()}
+      descriptions={[
+          {
+              text: createChance().sentence(),
+              icon: (<img src="http://placekitten.com/20/20" />),
+          },
+          {
+              text: createChance().sentence(),
+              icon: (<img src="http://placekitten.com/20/20" />),
+          }
+      ]}
+    />
+  </div>
+</Playground>
+
