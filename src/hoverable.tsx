@@ -27,7 +27,7 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
         y: 0,
     };
 
-    public ref: HTMLDivElement = null as any;
+    private _ref?: HTMLDivElement;
 
     public constructor(props: HoverableProps) {
 
@@ -48,14 +48,16 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
             >
                 {this.props.children}
             </div>
-            <div ref={(ref) => this.ref = ref} style={{
-                position: 'fixed',
-                top: this.state.y,
-                left: this.state.x,
-                zIndex: 10000,
-                userSelect: 'none',
-                pointerEvents: 'none',
-            }}>
+            <div
+                ref={(ref?: HTMLDivElement) => this._ref = ref}
+                style={{
+                    position: 'fixed',
+                    top: this.state.y,
+                    left: this.state.x,
+                    zIndex: 10000,
+                    userSelect: 'none',
+                    pointerEvents: 'none',
+                }}>
                 {this._renderOverlay()}
             </div>
         </React.Fragment>);
@@ -98,7 +100,12 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
     private _getPositionX(x: number): number {
 
         const viewWidth: number = window.innerWidth;
-        const width: number = this.ref.clientWidth || 0;
+
+        if (!this._ref) {
+            return x;
+        }
+
+        const width: number = this._ref.clientWidth || 0;
 
         if (viewWidth - x > width) {
             return x;
@@ -110,7 +117,11 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
     private _getPositionY(y: number): number {
 
         const viewHeight: number = window.innerHeight;
-        const height: number = this.ref.clientHeight || 0;
+        const height: number = this._ref.clientHeight || 0;
+
+        if (!this._ref) {
+            return y;
+        }
 
         if (viewHeight - y > height) {
             return y;
