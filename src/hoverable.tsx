@@ -28,7 +28,7 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
         y: 0,
     };
 
-    private _ref?: HTMLDivElement;
+    private _ref: HTMLDivElement | null = null;
 
     public constructor(props: HoverableProps) {
 
@@ -50,7 +50,7 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
                 {this.props.children}
             </div>
             <div
-                ref={(ref?: HTMLDivElement) => this._ref = ref}
+                ref={(element: HTMLDivElement | null) => this._ref = element}
                 style={{
                     position: 'fixed',
                     top: this.state.y,
