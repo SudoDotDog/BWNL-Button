@@ -4,5 +4,6 @@
  * @description Index
  */
 
+export * from "./banner";
 export * from "./hold";
 
