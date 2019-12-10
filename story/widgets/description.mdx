@@ -1,0 +1,26 @@
+---
+name: Description
+menu: Widgets
+---
+
+import { Widgets } from "../../src";
+import { Playground } from "docz";
+import { createChance } from "../mock/chance";
+
+# Description
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Description
+      title={createChance().word()}
+      descriptions={[
+          {
+              text: createChance().sentence(),
+          },
+          {
+              text: createChance().sentence(),
+          }
+      ]}
+    />
+  </div>
+</Playground>
