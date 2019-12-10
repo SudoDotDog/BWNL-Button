@@ -4,14 +4,25 @@ name: Widgets
 
 import { Widgets } from "../src/index";
 import { Playground } from "docz";
+import { chance } from "./mock/chance";
 
 # Widgets
 
 ## Title
 
 <Playground>
-  <Widgets.Title
-  >
-    Test
-  </Widgets.Title>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Title
+      title="Great Title"
+      icon={<img
+        style={{width: '100%'}}
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg"
+      />}
+      iconContainerStyle={{
+        backgroundColor: 'rgba(45, 45, 45, 0.2)'
+      }}
+    >
+      {chance.paragraph()}
+    </Widgets.Title>
+  </div>
 </Playground>
