@@ -23,14 +23,8 @@ export class TitleWidget extends React.Component<TitleWidgetProps, TitleWidgetSt
 
     public render() {
 
-        return React.createElement('div',
-            {
-
-            },
-            this.props.children,
-            React.createElement('div', {
-
-            }, 'hold'),
-        );
+        return (<div>
+            123
+        </div>);
     }
 }

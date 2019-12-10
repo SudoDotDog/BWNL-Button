@@ -6,4 +6,5 @@
 
 export * from "./banner";
 export * from "./hold";
+export * from "./widgets";
 
