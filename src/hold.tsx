@@ -6,11 +6,12 @@
 
 import { Classes } from "jss";
 import * as React from "react";
+import { Square } from "./square";
 import { HoldStyle } from "./style/hold";
 
 export type HoldableButtonProps = {
 
-    readonly wrapperStyle?: React.CSSProperties;
+    readonly style?: React.CSSProperties;
     readonly width?: string;
     readonly block?: boolean;
     readonly borderColor?: string;
@@ -31,24 +32,19 @@ export class HoldableButton extends React.Component<HoldableButtonProps, Holdabl
 
     public render() {
 
-        return (<div style={{
-            width: this.props.width,
-        }}>
-            <div
-                style={{
-                    ...this.props.wrapperStyle,
-                    borderColor: this.props.borderColor,
-                }}
-                className={this._holdStyle.wrapper}
+        return (<Square
+            width={this.props.width}
+            contentClassName={this._holdStyle.container}
+            contentStyle={{
+                ...this.props.style,
+                borderColor: this.props.borderColor,
+            }}
+        >
+            <button
+                className={this._holdStyle.button}
             >
-                <div className={this._holdStyle.content}>
-                    <button
-                        className={this._holdStyle.button}
-                    >
-                        {this.props.children}
-                    </button>
-                </div>
-            </div>
-        </div>);
+                {this.props.children}
+            </button>
+        </Square>);
     }
 }
