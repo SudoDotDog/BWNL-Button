@@ -10,10 +10,11 @@ const ImageWidgetStyleBase: JSSStyle = {
 
     wrapper: {
         display: 'flex',
-    },
-    image: {
-        width: '100%',
-        height: '100%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '128px',
+        maxHeight: '256px',
     },
 };
 
