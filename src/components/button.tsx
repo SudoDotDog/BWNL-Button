@@ -1,15 +1,15 @@
 /**
  * @author WMXPY
  * @namespace Button
- * @description Hold
+ * @description Button
  */
 
 import { Classes } from "jss";
 import * as React from "react";
-import { Square } from "./components/square";
-import { HoldStyle } from "./style/hold";
+import { CoreButtonStyle } from "../style/button";
+import { Square } from "./square";
 
-export type HoldableButtonProps = {
+export type CoreButtonProps = {
 
     readonly style?: React.CSSProperties;
     readonly width?: string;
@@ -17,31 +17,31 @@ export type HoldableButtonProps = {
     readonly borderColor?: string;
 };
 
-export type HoldableButtonStates = {
+export type CoreButtonStates = {
 
 
 };
 
-export class HoldableButton extends React.Component<HoldableButtonProps, HoldableButtonStates> {
+export class CoreButton extends React.Component<CoreButtonProps, CoreButtonStates> {
 
-    public readonly state: HoldableButtonStates = {
+    public readonly state: CoreButtonStates = {
 
     };
 
-    private readonly _holdStyle: Classes = HoldStyle.use();
+    private readonly _coreButtonStyle: Classes = CoreButtonStyle.use();
 
     public render() {
 
         return (<Square
             width={this.props.width}
-            contentClassName={this._holdStyle.container}
+            contentClassName={this._coreButtonStyle.container}
             contentStyle={{
                 ...this.props.style,
                 borderColor: this.props.borderColor,
             }}
         >
             <button
-                className={this._holdStyle.button}
+                className={this._coreButtonStyle.button}
             >
                 {this.props.children}
             </button>

@@ -1,12 +1,12 @@
 /**
  * @author WMXPY
  * @namespace Style
- * @description Hold
+ * @description CoreButton
  */
 
 import { JSSStyle, StyleManager } from "@sudoo/jss";
 
-const HoldStyleBase: JSSStyle = {
+const CoreButtonStyleBase: JSSStyle = {
 
     container: {
         borderWidth: '3px',
@@ -29,4 +29,4 @@ const HoldStyleBase: JSSStyle = {
     },
 };
 
-export const HoldStyle: StyleManager = StyleManager.create(HoldStyleBase, 'hold').setPrefix('BWNL-Button-');
+export const CoreButtonStyle: StyleManager = StyleManager.create(CoreButtonStyleBase, 'core-button').setPrefix('BWNL-Button-');
