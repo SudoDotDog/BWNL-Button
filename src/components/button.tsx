@@ -17,6 +17,8 @@ export type CoreButtonProps = {
     readonly borderColor?: string;
 
     readonly onClick?: () => void;
+    readonly onMidClick?: () => void;
+    readonly onRightClick?: () => void;
 };
 
 export type CoreButtonStates = {
@@ -70,34 +72,59 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
     private _handleMouseIn() {
 
         window.addEventListener('mousedown', this._handleMouseDown);
-        window.removeEventListener('mouseup', this._handleMouseUp);
+        window.addEventListener('mouseup', this._handleMouseUp);
+        window.addEventListener('keydown', this._handleKeyDown);
+        window.addEventListener('keyup', this._handleKeyUp);
     }
 
     private _handleMouseOut() {
 
         window.removeEventListener('mousedown', this._handleMouseDown);
         window.removeEventListener('mouseup', this._handleMouseUp);
+        window.removeEventListener('keydown', this._handleKeyDown);
+        window.removeEventListener('keyup', this._handleKeyUp);
     }
 
     private _handleMouseDown(e: MouseEvent) {
 
-        e.stopPropagation();
-        e.preventDefault();
-        console.log(e);
+        this._stopDefault(e);
+        switch (e.which) {
+            case 1: this._trigger(this.props.onClick); break;
+            case 2: this._trigger(this.props.onMidClick); break;
+            case 3: this._trigger(this.props.onRightClick); break;
+        }
     }
 
     private _handleMouseUp(e: MouseEvent) {
 
+        this._stopDefault(e);
         console.log(e);
     }
 
-    private _handleKeyDown() {
+    private _handleKeyDown(e: KeyboardEvent) {
 
-
+        this._stopDefault(e);
+        console.log(e);
     }
 
-    private _handleKeyUp() {
+    private _handleKeyUp(e: KeyboardEvent) {
 
+        this._stopDefault(e);
+        console.log(e);
+    }
 
+    private _stopDefault(e: MouseEvent | KeyboardEvent) {
+
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    private _trigger(action?: () => void): boolean {
+
+        if (action) {
+            action();
+            return true;
+        }
+        return false;
     }
 }

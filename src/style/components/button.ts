@@ -16,6 +16,8 @@ const CoreButtonStyleBase: JSSStyle = {
     },
     button: {
         cursor: 'pointer',
+        userSelect: 'none',
+        pointerEvents: 'auto',
         borderRadius: 0,
         border: 0,
         padding: 0,

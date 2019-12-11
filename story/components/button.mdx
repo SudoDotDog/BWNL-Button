@@ -15,7 +15,9 @@ import { Playground } from "docz";
     <CoreButton
       borderColor="lightblue"
       width="80px"
-      onClick={() => alert('clicked')}
+      onClick={() => console.log('left clicked')}
+      onMidClick={() => console.log('mid clicked')}
+      onRightClick={() => console.log('right clicked')}
     >
       Clickable
     </CoreButton>
