@@ -9,6 +9,12 @@ import * as React from "react";
 import { CoreButtonStyle } from "../style/components/button";
 import { Square } from "./square";
 
+export type HoldConfig = {
+
+    readonly duration: number;
+    readonly action: () => void;
+};
+
 export type CoreButtonProps = {
 
     readonly style?: React.CSSProperties;
@@ -19,6 +25,12 @@ export type CoreButtonProps = {
     readonly onClick?: () => void;
     readonly onMidClick?: () => void;
     readonly onRightClick?: () => void;
+
+    readonly allowRepeat?: boolean;
+    readonly holds?: Record<string, HoldConfig>
+
+    readonly onStartHold?: (key: string, config: HoldConfig) => void;
+    readonly onStopHold?: (key: string, config: HoldConfig) => void;
 };
 
 export type CoreButtonStates = {
@@ -33,6 +45,8 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
     };
 
     private readonly _coreButtonStyle: Classes = CoreButtonStyle.use();
+    private _holding: string | null = null;
+    private _lastHolden: string | null = null;
     private _holdTimer: any;
 
     public constructor(props: CoreButtonProps) {
@@ -93,30 +107,75 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
             case 2: this._trigger(this.props.onMidClick); break;
             case 3: this._trigger(this.props.onRightClick); break;
         }
+        this._startHold(`mouse${e.which}`);
     }
 
     private _handleMouseUp(e: MouseEvent) {
 
         this._stopDefault(e);
-        console.log(e);
+        this._stopHold(`mouse${e.which}`);
     }
 
     private _handleKeyDown(e: KeyboardEvent) {
 
         this._stopDefault(e);
-        console.log(e);
+        this._startHold(e.key);
     }
 
     private _handleKeyUp(e: KeyboardEvent) {
 
         this._stopDefault(e);
-        console.log(e);
+        this._stopHold(e.key);
     }
 
     private _stopDefault(e: MouseEvent | KeyboardEvent) {
 
         e.stopPropagation();
         e.preventDefault();
+    }
+
+    private _startHold(key: string) {
+
+        if (!this.props.holds) {
+            return;
+        }
+
+        if (this.props.holds[key] && !this._holding) {
+
+            if (key === this._lastHolden && !this.props.allowRepeat) {
+                return;
+            }
+
+            const config: HoldConfig = this.props.holds[key];
+            this._holding = key;
+            if (this.props.onStartHold) {
+                this.props.onStartHold(key, config);
+            }
+
+            this._holdTimer = setTimeout(() => {
+                config.action();
+                this._stopHold(key);
+            }, config.duration);
+        }
+    }
+
+    private _stopHold(key: string) {
+
+        if (!this.props.holds) {
+            return;
+        }
+
+        if (this._holding === key) {
+
+            clearTimeout(this._holdTimer);
+            this._lastHolden = this._holding;
+            this._holding = null;
+
+            const config: HoldConfig = this.props.holds[key] as HoldConfig;
+            if (this.props.onStopHold) {
+                this.props.onStopHold(key, config);
+            }
+        }
     }
 
     private _trigger(action?: () => void): boolean {

@@ -90,13 +90,16 @@ export class OperationWidget extends React.Component<OperationWidgetProps> {
         return this.props.elements.map(this._renderFunction);
     }
 
-    private _renderFunction(element: OperationFunctionElement) {
+    private _renderFunction(element: OperationFunctionElement, index: number) {
 
         const zIndex: number = this.props.zIndex ? this.props.zIndex + 1 : DEFAULT_VALUES.TEXT_Z_INDEX;
-        return (<div style={{
-            zIndex,
-            color: this.props.textColor || 'white',
-        }}>
+        return (<div
+            key={index}
+            style={{
+                zIndex,
+                color: this.props.textColor || 'white',
+            }}
+        >
             <span
                 className={this._operationStyle.key}
                 style={{

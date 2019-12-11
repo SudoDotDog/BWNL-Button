@@ -8,7 +8,7 @@ import { Playground } from "docz";
 
 # Core Button
 
-## Click
+## Common
 
 <Playground>
   <div>
@@ -18,6 +18,63 @@ import { Playground } from "docz";
       onClick={() => console.log('left clicked')}
       onMidClick={() => console.log('mid clicked')}
       onRightClick={() => console.log('right clicked')}
+      onStartHold={(key) => console.log('START-HOLD', key)}
+      onStopHold={(key) => console.log('STOP-HOLD', key)}
+      holds={{
+        'mouse1': {
+          duration: 1000,
+          action: () => console.log('left holded'),
+        },
+        'mouse2': {
+          duration: 1000,
+          action: () => console.log('mid holded'),
+        },
+        'mouse3': {
+          duration: 1000,
+          action: () => console.log('right holded'),
+        },
+        'a': {
+          duration: 1000,
+          action: () => console.log('key "a" holded'),
+        },
+      }}
+    >
+      Clickable
+    </CoreButton>
+  </div>
+</Playground>
+
+## Allow Repeat
+
+<Playground>
+  <div>
+    <CoreButton
+      borderColor="lightblue"
+      width="80px"
+      allowRepeat
+      onClick={() => console.log('left clicked')}
+      onMidClick={() => console.log('mid clicked')}
+      onRightClick={() => console.log('right clicked')}
+      onStartHold={(key) => console.log('START-HOLD', key)}
+      onStopHold={(key) => console.log('STOP-HOLD', key)}
+      holds={{
+        'mouse1': {
+          duration: 1000,
+          action: () => console.log('left holded'),
+        },
+        'mouse2': {
+          duration: 1000,
+          action: () => console.log('mid holded'),
+        },
+        'mouse3': {
+          duration: 1000,
+          action: () => console.log('right holded'),
+        },
+        'a': {
+          duration: 1000,
+          action: () => console.log('key "a" holded'),
+        },
+      }}
     >
       Clickable
     </CoreButton>
