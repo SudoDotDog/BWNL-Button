@@ -8,111 +8,14 @@ import { Playground } from "docz";
 
 # Square Button
 
-## Common
-
 <Playground>
   <div>
     <SquareButton
       borderColor="lightblue"
       hoverBorderColor="lightblue"
       width="80px"
-      onClick={() => console.log('left clicked')}
-      onMidClick={() => console.log('mid clicked')}
-      onRightClick={() => console.log('right clicked')}
-      onStartHold={(key) => console.log('START-HOLD', key)}
-      onStopHold={(key) => console.log('STOP-HOLD', key)}
-      holds={{
-        'mouse1': {
-          duration: 1000,
-          name: 'Mouse 1',
-          action: () => console.log('left holded'),
-        },
-        'mouse2': {
-          duration: 1000,
-          name: 'Mouse 2',
-          action: () => console.log('mid holded'),
-        },
-        'mouse3': {
-          duration: 1000,
-          name: 'Mouse 3',
-          action: () => console.log('right holded'),
-        },
-        'a': {
-          duration: 1000,
-          name: 'Key A',
-          action: () => console.log('key "a" holded'),
-        },
-      }}
-    >
-      Clickable
-    </SquareButton>
-  </div>
-</Playground>
-
-
-## Disabled
-
-<Playground>
-  <div>
-    <SquareButton
-      borderColor="lightblue"
-      hoverBorderColor="lightblue"
-      width="80px"
-      disabled
-      onClick={() => console.log('left clicked')}
-      onMidClick={() => console.log('mid clicked')}
-      onRightClick={() => console.log('right clicked')}
-      onStartHold={(key) => console.log('START-HOLD', key)}
-      onStopHold={(key) => console.log('STOP-HOLD', key)}
-      holds={{
-        'mouse1': {
-          duration: 1000,
-          name: 'Mouse 1',
-          action: () => console.log('left holded'),
-        },
-      }}
-    >
-      Clickable
-    </SquareButton>
-  </div>
-</Playground>
-
-## Allow Repeat
-
-<Playground>
-  <div>
-    <SquareButton
-      borderColor="lightblue"
-      hoverBorderColor="lightblue"
-      width="80px"
-      allowRepeat
-      onClick={() => console.log('left clicked')}
-      onMidClick={() => console.log('mid clicked')}
-      onRightClick={() => console.log('right clicked')}
-      onStartHold={(key) => console.log('START-HOLD', key)}
-      onStopHold={(key) => console.log('STOP-HOLD', key)}
-      holds={{
-        'mouse1': {
-          duration: 1000,
-          name: 'Mouse 1',
-          action: () => console.log('left holded'),
-        },
-        'mouse2': {
-          duration: 1000,
-          name: 'Mouse 2',
-          action: () => console.log('mid holded'),
-        },
-        'mouse3': {
-          duration: 1000,
-          name: 'Mouse 3',
-          action: () => console.log('right holded'),
-        },
-        'a': {
-          duration: 1000,
-          name: 'Key A',
-          action: () => console.log('key "a" holded'),
-        },
-      }}
+      onMouseEnter={() => console.log('mouse-enter')}
+      onMouseLeave={() => console.log('mouse-leave')}
     >
       Clickable
     </SquareButton>
