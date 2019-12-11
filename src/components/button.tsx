@@ -177,7 +177,10 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
             }
 
             this._holdTimer = setTimeout(() => {
+
                 config.action();
+
+                this._lastHolden = this._holding;
                 this._stopHold(key);
             }, config.duration);
         }
@@ -196,7 +199,6 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
         if (this._holding === key) {
 
             clearTimeout(this._holdTimer);
-            this._lastHolden = this._holding;
             this._holding = null;
 
             const config: HoldConfig = this.props.holds[key] as HoldConfig;

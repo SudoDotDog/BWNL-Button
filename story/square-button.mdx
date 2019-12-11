@@ -14,24 +14,28 @@ import { createChance } from "./mock/chance";
   <SquareButton
     width="80px"
     buttonProps={{
-      borderColor: 'gray',
-      hoverBorderColor: 'gray',
+      borderColor: 'lightgray',
+      hoverBorderColor: 'lightgray',
     }}
     operationWidgetStyle={{
       borderTop: '1px solid white',
     }}
     position="bottom-right"
-    allowRepeat
     holds={{
       'mouse1': {
         duration: 1000,
         name: 'Continue',
         action: () => console.log('left holded - continue'),
       },
+      'a': {
+        duration: 3000,
+        name: 'Abandon',
+        action: () => console.log('a holded - Abandon'),
+      },
     }}
     render={<Banner
       style={{
-        backgroundColor: 'gray',
+        backgroundColor: 'lightgray',
       }}
     >
       <Widgets.Title
@@ -41,7 +45,6 @@ import { createChance } from "./mock/chance";
           backgroundColor: 'rgba(45, 45, 45, 0.2)',
           padding: '5px',
         }}
-        style={{color: 'white'}}
       >
         {createChance().sentence()}
       </Widgets.Title>
