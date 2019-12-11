@@ -55,7 +55,8 @@ export class SquareButton extends React.Component<SquareButtonProps, SquareButto
                 {...this.props.buttonProps}
                 width={this.props.width}
                 holds={this.props.holds}
-                onStartHold={}
+                onStartHold={this._handleStartHold}
+                onStopHold={this._handleStopHold}
             >
                 {this.props.children}
             </CoreButton>
