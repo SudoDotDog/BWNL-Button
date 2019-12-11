@@ -66,6 +66,10 @@ export class SquareButton extends React.Component<SquareButtonProps, SquareButto
 
     private _handleStartHold(key: string, config: HoldConfig) {
 
+        if (this.props.buttonProps && this.props.buttonProps.onStartHold) {
+            this.props.buttonProps.onStartHold(key, config);
+        }
+
         this.setState({
             processing: true,
             duration: config.duration,
@@ -73,6 +77,10 @@ export class SquareButton extends React.Component<SquareButtonProps, SquareButto
     }
 
     private _handleStopHold(key: string, config: HoldConfig) {
+
+        if (this.props.buttonProps && this.props.buttonProps.onStopHold) {
+            this.props.buttonProps.onStopHold(key, config);
+        }
 
         this.setState({
             processing: false,
