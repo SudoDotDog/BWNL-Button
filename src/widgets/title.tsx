@@ -7,11 +7,14 @@
 import { Classes } from "jss";
 import * as React from "react";
 import { TitleWidgetStyle } from "../style/widgets/title";
+import { fixBackgroundImage } from "../util";
 
 export type TitleWidgetProps = {
 
     readonly title: string;
     readonly icon?: React.ReactNode;
+    readonly iconImage?: string;
+    readonly iconWidth?: string;
     readonly iconContainerStyle?: React.CSSProperties;
 };
 
@@ -32,12 +35,16 @@ export class TitleWidget extends React.PureComponent<TitleWidgetProps> {
 
     private _renderIcon() {
 
-        if (!this.props.icon) {
+        if (!this.props.icon && !this.props.iconImage) {
             return null;
         }
         return (<div
             className={this._titleStyle.icon}
-            style={this.props.iconContainerStyle}
+            style={{
+                width: this.props.iconWidth,
+                ...this.props.iconContainerStyle,
+                backgroundImage: fixBackgroundImage(this.props.iconImage),
+            }}
         >
             {this.props.icon}
         </div>);

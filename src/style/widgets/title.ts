@@ -13,11 +13,15 @@ const TitleWidgetStyleBase: JSSStyle = {
         backgroundColor: 'transparent',
     },
     icon: {
-        maxWidth: '128px',
+        maxWidth: '256px',
+        minWidth: '128px',
         overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
     },
     text: {
         flex: 1,
