@@ -4,8 +4,17 @@
  * @description Operation
  */
 
-import { NAVY } from "@bwnl/shiny-inline";
 import { JSSStyle, StyleManager } from "@sudoo/jss";
+
+const operationProgressKeyframes = {
+
+    '0%': {
+        width: '0%',
+    },
+    '100%': {
+        width: '100%',
+    },
+};
 
 const OperationWidgetStyleBase: JSSStyle = {
 
@@ -17,12 +26,21 @@ const OperationWidgetStyleBase: JSSStyle = {
         alignItems: 'center',
         paddingLeft: '5px',
         paddingRight: '5px',
+        position: 'relative',
+    },
+    progress: {
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        left: 0,
+        top: 0,
     },
     key: {
         lineHeight: '18px',
-        border: `1px solid ${NAVY}`,
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderBottomWidth: '2px',
         borderRadius: '3px',
-        borderBottom: `2px solid ${NAVY}`,
         paddingLeft: '5px',
         paddingRight: '5px',
         marginLeft: '2px',
@@ -30,9 +48,13 @@ const OperationWidgetStyleBase: JSSStyle = {
         fontSize: '13px',
     },
     text: {
+        zIndex: 10,
         fontWeight: 'bold',
         marginLeft: '2px',
         marginRight: '2px',
+    },
+    '@global': {
+        '@keyframes bwnl-button-operation-progress': operationProgressKeyframes,
     },
 };
 

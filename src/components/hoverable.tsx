@@ -9,6 +9,7 @@ import * as React from "react";
 export type HoverableProps = {
 
     readonly render?: React.ReactNode;
+    readonly zIndex?: number;
     readonly position?: 'top-left' | 'bottom-right';
 };
 
@@ -55,7 +56,8 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
                     position: 'fixed',
                     top: this.state.y,
                     left: this.state.x,
-                    zIndex: 10000,
+                    // tslint:disable-next-line: no-magic-numbers
+                    zIndex: this.props.zIndex || 15,
                     userSelect: 'none',
                     pointerEvents: 'none',
                 }}>
