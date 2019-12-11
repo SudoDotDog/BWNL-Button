@@ -12,6 +12,7 @@ import { Square } from "./square";
 export type HoldConfig = {
 
     readonly duration: number;
+    readonly name: string;
     readonly action: () => void;
 };
 
@@ -29,7 +30,7 @@ export type CoreButtonProps = {
     readonly onRightClick?: () => void;
 
     readonly allowRepeat?: boolean;
-    readonly holds?: Record<string, HoldConfig>
+    readonly holds?: Record<string, HoldConfig>;
 
     readonly onStartHold?: (key: string, config: HoldConfig) => void;
     readonly onStopHold?: (key: string, config: HoldConfig) => void;
@@ -208,7 +209,7 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
     private _trigger(action?: () => void): boolean {
 
         if (this.props.disabled) {
-            return;
+            return false;
         }
 
         if (action) {

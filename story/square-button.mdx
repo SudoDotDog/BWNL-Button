@@ -17,6 +17,17 @@ import { createChance } from "./mock/chance";
       borderColor: 'gray',
       hoverBorderColor: 'gray',
     }}
+    operationWidgetStyle={{
+      borderTop: '1px solid white',
+    }}
+    position="bottom-right"
+    holds={{
+      'mouse1': {
+        duration: 1000,
+        name: 'Continue',
+        action: () => console.log('left holded - continue'),
+      },
+    }}
     render={<Banner
       style={{
         backgroundColor: 'gray',
