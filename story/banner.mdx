@@ -2,8 +2,9 @@
 name: Banner
 ---
 
-import { Banner } from "../src/index";
+import { Banner, Widgets } from "../src/index";
 import { Playground } from "docz";
+import { createChance } from "./mock/chance";
 
 # Banner
 
@@ -11,7 +12,19 @@ import { Playground } from "docz";
 
 <Playground>
   <Banner
+    style={{
+      backgroundColor: 'lightblue',
+    }}
   >
-    Test
+    <Widgets.Title
+      title="Great Title"
+      iconImage="http://placekitten.com/500/500"
+      iconContainerStyle={{
+        backgroundColor: 'rgba(45, 45, 45, 0.2)',
+        padding: '5px',
+      }}
+    >
+      {createChance().paragraph()}
+    </Widgets.Title>
   </Banner>
 </Playground>
