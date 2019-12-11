@@ -8,6 +8,8 @@ import * as React from "react";
 
 export type HoverableProps = {
 
+    readonly style?: React.CSSProperties;
+    readonly className?: string;
     readonly render?: React.ReactNode;
     readonly zIndex?: number;
     readonly position?: 'top-left' | 'bottom-right';
@@ -44,6 +46,8 @@ export class Hoverable extends React.Component<HoverableProps, HoverableStates> 
 
         return (<React.Fragment>
             <div
+                style={this.props.style}
+                className={this.props.className}
                 onMouseEnter={this._handleMouseEnter}
                 onMouseMove={this._handleMouseMove}
                 onMouseLeave={this._handleMouseLeave}

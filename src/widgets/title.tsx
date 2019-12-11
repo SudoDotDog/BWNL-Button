@@ -4,6 +4,7 @@
  * @description Title
  */
 
+import { mergeClasses } from "@sudoo/jss";
 import { Classes } from "jss";
 import * as React from "react";
 import { TitleWidgetStyle } from "../style/widgets/title";
@@ -16,6 +17,8 @@ export type TitleWidgetProps = {
     readonly iconImage?: string;
     readonly iconWidth?: string;
     readonly iconContainerStyle?: React.CSSProperties;
+    readonly style?: React.CSSProperties;
+    readonly className?: string;
 };
 
 export class TitleWidget extends React.PureComponent<TitleWidgetProps> {
@@ -24,7 +27,10 @@ export class TitleWidget extends React.PureComponent<TitleWidgetProps> {
 
     public render() {
 
-        return (<div className={this._titleStyle.wrapper}>
+        return (<div
+            className={mergeClasses(this.props.className, this._titleStyle.wrapper)}
+            style={this.props.style}
+        >
             {this._renderIcon()}
             <div className={this._titleStyle.text}>
                 <div className={this._titleStyle.title}>{this.props.title}</div>

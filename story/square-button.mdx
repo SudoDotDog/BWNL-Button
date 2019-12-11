@@ -1,0 +1,40 @@
+---
+name: Square Button
+---
+
+import { Banner, SquareButton, Widgets } from "../src/index";
+import { Playground } from "docz";
+import { createChance } from "./mock/chance";
+
+# Square Button
+
+## Simple
+
+<Playground>
+  <SquareButton
+    width="80px"
+    buttonProps={{
+      borderColor: 'gray',
+      hoverBorderColor: 'gray',
+    }}
+    render={<Banner
+      style={{
+        backgroundColor: 'gray',
+      }}
+    >
+      <Widgets.Title
+        title="Great Title"
+        iconImage="http://placekitten.com/500/500"
+        iconContainerStyle={{
+          backgroundColor: 'rgba(45, 45, 45, 0.2)',
+          padding: '5px',
+        }}
+        style={{color: 'white'}}
+      >
+        {createChance().sentence()}
+      </Widgets.Title>
+    </Banner>}
+  >
+    123
+  </SquareButton>
+</Playground>
