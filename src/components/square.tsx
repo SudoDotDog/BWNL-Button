@@ -7,7 +7,7 @@
 import { mergeClasses } from "@sudoo/jss";
 import { Classes } from "jss";
 import * as React from "react";
-import { SquareStyle } from "./style/square";
+import { SquareStyle } from "../style/square";
 
 export type SquareProps = {
 

@@ -6,7 +6,7 @@
 
 import { Classes } from "jss";
 import * as React from "react";
-import { Square } from "./square";
+import { Square } from "./components/square";
 import { HoldStyle } from "./style/hold";
 
 export type HoldableButtonProps = {
