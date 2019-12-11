@@ -1,12 +1,12 @@
 /**
  * @author WMXPY
  * @namespace Style
- * @description CoreButton
+ * @description SquareButton
  */
 
 import { JSSStyle, StyleManager } from "@sudoo/jss";
 
-const CoreButtonStyleBase: JSSStyle = {
+const SquareButtonStyleBase: JSSStyle = {
 
     container: {
         borderWidth: '3px',
@@ -33,4 +33,4 @@ const CoreButtonStyleBase: JSSStyle = {
     },
 };
 
-export const CoreButtonStyle: StyleManager = StyleManager.create(CoreButtonStyleBase, 'core-button').setPrefix('BWNL-Button-');
+export const SquareButtonStyle: StyleManager = StyleManager.create(SquareButtonStyleBase, 'square-button').setPrefix('BWNL-Button-');

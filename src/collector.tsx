@@ -1,13 +1,11 @@
 /**
  * @author WMXPY
  * @namespace Button
- * @description Button
+ * @description Collector
  */
 
-import { Classes } from "jss";
 import * as React from "react";
-import { CoreButtonStyle } from "../style/components/button";
-import { Square } from "./square";
+import { CoreButtonProps } from "./declare";
 
 export type HoldConfig = {
 
@@ -16,14 +14,9 @@ export type HoldConfig = {
     readonly action: () => void;
 };
 
-export type CoreButtonProps = {
+export type CollectorProps = {
 
-    readonly style?: React.CSSProperties;
-    readonly width?: string;
-    readonly block?: boolean;
-    readonly borderColor?: string;
-    readonly hoverBorderColor?: string;
-    readonly borderRadius?: string | number;
+    readonly component: React.ComponentType<CoreButtonProps>;
 
     readonly onClick?: () => void;
     readonly onMidClick?: () => void;
@@ -38,24 +31,23 @@ export type CoreButtonProps = {
     readonly disabled?: boolean;
 };
 
-export type CoreButtonStates = {
+export type CollectorStates = {
 
     readonly hover: boolean;
 };
 
-export class CoreButton extends React.Component<CoreButtonProps, CoreButtonStates> {
+export class Collector extends React.Component<CollectorProps, CollectorStates> {
 
-    public readonly state: CoreButtonStates = {
+    public readonly state: CollectorStates = {
 
         hover: false,
     };
 
-    private readonly _coreButtonStyle: Classes = CoreButtonStyle.use();
     private _holding: string | null = null;
     private _lastHolden: string | null = null;
     private _holdTimer: any;
 
-    public constructor(props: CoreButtonProps) {
+    public constructor(props: CollectorProps) {
 
         super(props);
 
@@ -70,29 +62,15 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
 
     public render() {
 
-        return (<Square
-            width={this.props.width}
-            contentClassName={this._coreButtonStyle.container}
-            contentStyle={{
-                ...this.props.style,
-                borderColor: this.props.borderColor,
-                borderRadius: this.props.borderRadius,
-            }}
+        const Component: React.ComponentType<CoreButtonProps> = this.props.component;
+
+        return (<Component
+            disabled={this.props.disabled}
+            onMouseEnter={this._handleMouseIn}
+            onMouseLeave={this._handleMouseOut}
         >
-            <button
-                className={this._coreButtonStyle.button}
-                style={{
-                    borderColor: this.state.hover ? this.props.hoverBorderColor : 'transparent',
-                    borderRadius: this.props.borderRadius,
-                }}
-                disabled={this.props.disabled}
-                onContextMenu={(e) => e.preventDefault()}
-                onMouseEnter={this._handleMouseIn}
-                onMouseLeave={this._handleMouseOut}
-            >
-                {this.props.children}
-            </button>
-        </Square>);
+            {this.props.children}
+        </Component>);
     }
 
     private _handleMouseIn() {
