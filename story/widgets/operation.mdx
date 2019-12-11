@@ -1,0 +1,27 @@
+---
+name: Operation
+menu: Widgets
+---
+
+import { Widgets } from "../../src";
+import { Playground } from "docz";
+import { createChance } from "../mock/chance";
+
+# Operation
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Operation
+      elements={[
+          {
+              key: 'Mouse Left',
+              text: 'Continue',
+          },
+          {
+              key: 'Mouse Right',
+              text: 'Abort',
+          },
+      ]}
+    />
+  </div>
+</Playground>
