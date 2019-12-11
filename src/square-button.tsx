@@ -57,20 +57,27 @@ export class SquareButton extends React.Component<SquareButtonProps, SquareButto
                 holds={this.props.holds}
                 onStartHold={this._handleStartHold}
                 onStopHold={this._handleStopHold}
+                allowRepeat={this.props.allowRepeat}
             >
                 {this.props.children}
             </CoreButton>
         </Hoverable>);
     }
 
-    private _handleStartHold() {
+    private _handleStartHold(key: string, config: HoldConfig) {
 
-
+        this.setState({
+            processing: true,
+            duration: config.duration,
+        });
     }
 
-    private _handleStopHold() {
+    private _handleStopHold(key: string, config: HoldConfig) {
 
-
+        this.setState({
+            processing: false,
+            duration: 0,
+        });
     }
 
     private _renderHoverableContent() {
