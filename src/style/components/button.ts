@@ -18,15 +18,17 @@ const CoreButtonStyleBase: JSSStyle = {
         cursor: 'pointer',
         userSelect: 'none',
         pointerEvents: 'auto',
-        borderRadius: 0,
-        border: 0,
+        borderWidth: '2px',
+        borderStyle: 'solid',
+        borderColor: 'transparent',
         padding: 0,
         height: '100%',
         width: '100%',
         outline: 0,
         fontSize: '16px',
-        '&:hover': {
-
+        transition: '0.3s all',
+        '&:disabled': {
+            cursor: 'not-allowed',
         },
     },
 };

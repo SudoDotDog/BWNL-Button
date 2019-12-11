@@ -21,6 +21,8 @@ export type CoreButtonProps = {
     readonly width?: string;
     readonly block?: boolean;
     readonly borderColor?: string;
+    readonly hoverBorderColor?: string;
+    readonly borderRadius?: string | number;
 
     readonly onClick?: () => void;
     readonly onMidClick?: () => void;
@@ -31,17 +33,20 @@ export type CoreButtonProps = {
 
     readonly onStartHold?: (key: string, config: HoldConfig) => void;
     readonly onStopHold?: (key: string, config: HoldConfig) => void;
+
+    readonly disabled?: boolean;
 };
 
 export type CoreButtonStates = {
 
-
+    readonly hover: boolean;
 };
 
 export class CoreButton extends React.Component<CoreButtonProps, CoreButtonStates> {
 
     public readonly state: CoreButtonStates = {
 
+        hover: false,
     };
 
     private readonly _coreButtonStyle: Classes = CoreButtonStyle.use();
@@ -70,10 +75,16 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
             contentStyle={{
                 ...this.props.style,
                 borderColor: this.props.borderColor,
+                borderRadius: this.props.borderRadius,
             }}
         >
             <button
                 className={this._coreButtonStyle.button}
+                style={{
+                    borderColor: this.state.hover ? this.props.hoverBorderColor : 'transparent',
+                    borderRadius: this.props.borderRadius,
+                }}
+                disabled={this.props.disabled}
                 onContextMenu={(e) => e.preventDefault()}
                 onMouseEnter={this._handleMouseIn}
                 onMouseLeave={this._handleMouseOut}
@@ -85,6 +96,10 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
 
     private _handleMouseIn() {
 
+        if (this.props.disabled) {
+            return;
+        }
+        this.setState({ hover: true });
         window.addEventListener('mousedown', this._handleMouseDown);
         window.addEventListener('mouseup', this._handleMouseUp);
         window.addEventListener('keydown', this._handleKeyDown);
@@ -93,6 +108,10 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
 
     private _handleMouseOut() {
 
+        if (this.props.disabled) {
+            return;
+        }
+        this.setState({ hover: false });
         window.removeEventListener('mousedown', this._handleMouseDown);
         window.removeEventListener('mouseup', this._handleMouseUp);
         window.removeEventListener('keydown', this._handleKeyDown);
@@ -140,6 +159,10 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
             return;
         }
 
+        if (this.props.disabled) {
+            return;
+        }
+
         if (this.props.holds[key] && !this._holding) {
 
             if (key === this._lastHolden && !this.props.allowRepeat) {
@@ -165,6 +188,10 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
             return;
         }
 
+        if (this.props.disabled) {
+            return;
+        }
+
         if (this._holding === key) {
 
             clearTimeout(this._holdTimer);
@@ -179,6 +206,10 @@ export class CoreButton extends React.Component<CoreButtonProps, CoreButtonState
     }
 
     private _trigger(action?: () => void): boolean {
+
+        if (this.props.disabled) {
+            return;
+        }
 
         if (action) {
             action();
