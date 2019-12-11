@@ -9,6 +9,13 @@ import { Classes } from "jss";
 import * as React from "react";
 import { OperationWidgetStyle } from "../style/widgets/operation";
 
+enum DEFAULT_VALUES {
+
+    FOREGROUND_Z_INDEX = 13,
+    TEXT_Z_INDEX = 14,
+    DURATION = '3s',
+}
+
 export type OperationFunctionElement = {
 
     readonly key: string;
@@ -21,24 +28,17 @@ export type OperationWidgetProps = {
     readonly height?: string;
     readonly className?: string;
     readonly style?: React.CSSProperties;
-    readonly zIndex?: number;
 
+    readonly duration?: string;
+    readonly zIndex?: number;
     readonly backgroundColor?: string;
     readonly foregroundColor?: string;
     readonly textColor?: string;
+
+    readonly processing?: boolean;
 };
 
-export type OperationWidgetStates = {
-
-    readonly processing: boolean;
-};
-
-export class OperationWidget extends React.Component<OperationWidgetProps, OperationWidgetStates> {
-
-    public readonly state: OperationWidgetStates = {
-
-        processing: false,
-    };
+export class OperationWidget extends React.Component<OperationWidgetProps> {
 
     private readonly _operationStyle: Classes = OperationWidgetStyle.use();
 
@@ -66,13 +66,18 @@ export class OperationWidget extends React.Component<OperationWidgetProps, Opera
 
     private _renderProgress() {
 
+        if (!this.props.processing) {
+            return null;
+        }
+
+        const zIndex: number = this.props.zIndex || DEFAULT_VALUES.FOREGROUND_Z_INDEX;
+        const duration: string = this.props.duration || DEFAULT_VALUES.DURATION;
         return (<div
             className={this._operationStyle.progress}
             style={{
-                // tslint:disable-next-line: no-magic-numbers
-                zIndex: this.props.zIndex || 13,
+                zIndex,
                 backgroundColor: this.props.foregroundColor || 'darkgray',
-                animation: 'bwnl-button-operation-progress 7s infinite linear',
+                animationDuration: duration,
             }}
         />);
     }
@@ -87,9 +92,9 @@ export class OperationWidget extends React.Component<OperationWidgetProps, Opera
 
     private _renderFunction(element: OperationFunctionElement) {
 
+        const zIndex: number = this.props.zIndex ? this.props.zIndex + 1 : DEFAULT_VALUES.TEXT_Z_INDEX;
         return (<div style={{
-            // tslint:disable-next-line: no-magic-numbers
-            zIndex: this.props.zIndex + 1 || 14,
+            zIndex,
             color: this.props.textColor || 'white',
         }}>
             <span

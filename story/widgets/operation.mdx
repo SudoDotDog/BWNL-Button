@@ -9,19 +9,84 @@ import { createChance } from "../mock/chance";
 
 # Operation
 
+## Static
+
 <Playground>
   <div style={{backgroundColor: 'lightblue'}}>
     <Widgets.Operation
       elements={[
           {
-              key: 'Mouse Left',
-              text: 'Continue',
+            key: 'Mouse Left',
+            text: 'Continue',
           },
           {
-              key: 'Mouse Right',
-              text: 'Abort',
+            key: 'Mouse Right',
+            text: 'Abort',
           },
       ]}
     />
+  </div>
+</Playground>
+
+## Running
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    <Widgets.Operation
+      duration="5s"
+      processing
+      elements={[
+          {
+            key: 'Mouse Left',
+            text: 'Continue',
+          },
+          {
+            key: 'Mouse Right',
+            text: 'Abort',
+          },
+      ]}
+    />
+  </div>
+</Playground>
+
+## Relative
+
+<Playground>
+  <div style={{backgroundColor: 'lightblue'}}>
+    {(() => {
+      class OperationRelative extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            loading: false,
+          }
+        }
+        render() {
+          return (<React.Fragment>
+            <Widgets.Operation
+              duration="1s"
+              processing={this.state.loading}
+              elements={[
+                  {
+                    key: 'Mouse Left',
+                    text: 'Continue',
+                  },
+                  {
+                    key: 'Mouse Right',
+                    text: 'Abort',
+                  },
+              ]}
+            />
+            <button 
+              onMouseUp={() => this.setState({loading: false})}
+              onMouseDown={() => this.setState({loading: true})}
+            >
+              Hold
+            </button>
+          </React.Fragment>);
+        }
+      }
+      return <OperationRelative />
+    })()}
   </div>
 </Playground>

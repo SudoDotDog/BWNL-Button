@@ -34,6 +34,9 @@ const OperationWidgetStyleBase: JSSStyle = {
         width: '100%',
         left: 0,
         top: 0,
+        animationName: 'bwnl-button-operation-progress',
+        animationIterationCount: 1,
+        animationTimingFunction: 'linear',
     },
     key: {
         lineHeight: '18px',
