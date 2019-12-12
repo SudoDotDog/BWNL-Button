@@ -8,10 +8,10 @@ import * as React from "react";
 
 export type CoreButtonProps = {
 
-    readonly onMouseEnter: (event: React.MouseEvent) => void;
-    readonly onMouseLeave: (event: React.MouseEvent) => void;
+    readonly onMouseEnter: (event: MouseEvent | React.MouseEvent) => void;
+    readonly onMouseLeave: (event: MouseEvent | React.MouseEvent) => void;
 
-    readonly onContextMenu?: (event: Event) => void;
+    readonly onContextMenu?: (event: MouseEvent) => void;
 
     readonly disabled?: boolean;
     readonly hovering?: boolean;
