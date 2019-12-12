@@ -20,17 +20,7 @@ export type SquareButtonProps = {
     readonly borderRadius?: string | number;
 } & CoreButtonProps;
 
-export type SquareButtonStates = {
-
-    readonly hover: boolean;
-};
-
-export class SquareButton extends React.Component<SquareButtonProps, SquareButtonStates> {
-
-    public readonly state: SquareButtonStates = {
-
-        hover: false,
-    };
+export class SquareButton extends React.Component<SquareButtonProps> {
 
     private readonly _SquareButtonStyle: Classes = SquareButtonStyle.use();
 
@@ -48,7 +38,7 @@ export class SquareButton extends React.Component<SquareButtonProps, SquareButto
             <button
                 className={this._SquareButtonStyle.button}
                 style={{
-                    borderColor: this.state.hover ? this.props.hoverBorderColor : 'transparent',
+                    borderColor: this.props.hovering ? this.props.hoverBorderColor : 'transparent',
                     borderRadius: this.props.borderRadius,
                 }}
                 disabled={this.props.disabled}

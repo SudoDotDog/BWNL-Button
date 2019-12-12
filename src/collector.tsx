@@ -68,6 +68,7 @@ export class Collector extends React.Component<CollectorProps, CollectorStates> 
         return (<Component
             {...this.props.componentProps}
             disabled={this.props.disabled}
+            hovering={this.state.hover}
             onMouseEnter={this._handleMouseIn}
             onMouseLeave={this._handleMouseOut}
             onContextMenu={this._stopDefault}

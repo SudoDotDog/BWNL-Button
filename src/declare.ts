@@ -14,5 +14,6 @@ export type CoreButtonProps = {
     readonly onContextMenu?: (event: Event) => void;
 
     readonly disabled?: boolean;
+    readonly hovering?: boolean;
     readonly children?: any;
 };
