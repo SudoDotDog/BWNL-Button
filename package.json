@@ -1,8 +1,7 @@
 {
   "name": "@bwnl/button",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": ":chestnut: Confirm Action",
-  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
@@ -27,7 +26,7 @@
     "@sudoo/io": "^1.6.1",
     "@sudoo/mock": "^1.2.0",
     "@sudoo/react-force": "^1.6.2",
-    "@sudoo/react-force-dev": "^1.6.2",
+    "@sudoo/react-force-dev": "^1.6.4",
     "@sudoo/triforce": "^2.0.4",
     "docz": "^1.3.2",
     "docz-theme-default": "^1.2.0"
