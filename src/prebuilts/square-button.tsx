@@ -36,6 +36,7 @@ export class SquareButtonPrebuilt extends React.Component<SquareButtonPrebuiltPr
 
         return (<Container
             component={SquareButton}
+            componentProps={this.props.buttonProps}
             {...this.props}
         >
             {this.props.children}

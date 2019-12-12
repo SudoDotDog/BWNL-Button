@@ -17,6 +17,7 @@ export type HoldConfig = {
 export type CollectorProps = {
 
     readonly component: React.ComponentType<CoreButtonProps>;
+    readonly componentProps?: Record<string, any> & CoreButtonProps;
 
     readonly onClick?: () => void;
     readonly onMidClick?: () => void;
@@ -65,9 +66,11 @@ export class Collector extends React.Component<CollectorProps, CollectorStates> 
         const Component: React.ComponentType<CoreButtonProps> = this.props.component;
 
         return (<Component
+            {...this.props.componentProps}
             disabled={this.props.disabled}
             onMouseEnter={this._handleMouseIn}
             onMouseLeave={this._handleMouseOut}
+            onContextMenu={this._stopDefault}
         >
             {this.props.children}
         </Component>);

@@ -11,6 +11,8 @@ export type CoreButtonProps = {
     readonly onMouseEnter: (event: React.MouseEvent) => void;
     readonly onMouseLeave: (event: React.MouseEvent) => void;
 
+    readonly onContextMenu?: (event: Event) => void;
+
     readonly disabled?: boolean;
     readonly children?: any;
 };
