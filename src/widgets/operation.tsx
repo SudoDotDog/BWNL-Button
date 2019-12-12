@@ -20,6 +20,8 @@ export type OperationFunctionElement = {
 
     readonly key: string;
     readonly text: string;
+
+    readonly name?: string;
 };
 
 export type OperationWidgetProps = {
@@ -93,6 +95,7 @@ export class OperationWidget extends React.Component<OperationWidgetProps> {
     private _renderFunction(element: OperationFunctionElement, index: number) {
 
         const zIndex: number = this.props.zIndex ? this.props.zIndex + 1 : DEFAULT_VALUES.TEXT_Z_INDEX;
+        const keyName: string = element.name || element.key;
         return (<div
             key={index}
             style={{
@@ -106,7 +109,7 @@ export class OperationWidget extends React.Component<OperationWidgetProps> {
                     borderColor: this.props.textColor || 'white',
                 }}
             >
-                {element.key}
+                {keyName}
             </span>
             <span className={this._operationStyle.text}>
                 {element.text}

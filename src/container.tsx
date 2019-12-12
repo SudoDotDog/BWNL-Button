@@ -7,6 +7,7 @@
 import * as React from "react";
 import { Collector, CollectorProps, HoldConfig } from "./collector";
 import { Hoverable, HoverableProps } from "./components/hoverable";
+import { parseKeyName } from "./util";
 import { OperationFunctionElement, OperationWidget } from "./widgets/operation";
 
 export type ContainerProps = {
@@ -107,9 +108,14 @@ export class Container extends React.Component<ContainerProps, ContainerStates> 
     private _getElements(holds: Record<string, HoldConfig>): OperationFunctionElement[] {
 
         const keys: string[] = Object.keys(holds);
-        return keys.map((key: string) => ({
-            key,
-            text: (holds[key] as HoldConfig).name,
-        }));
+
+        return keys.map((key: string) => {
+            const element: OperationFunctionElement = {
+                key,
+                name: parseKeyName(key),
+                text: (holds[key] as HoldConfig).name,
+            };
+            return element;
+        });
     }
 }
