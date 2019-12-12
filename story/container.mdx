@@ -9,4 +9,43 @@ import { createChance } from "./mock/chance";
 # Container
 
 <Playground>
+    <div style={{backgroundColor: 'lightblue'}}>
+        {(() => {
+            class Example extends React.Component {
+                render() {
+                    return (<div
+                        onMouseEnter={this.props.onMouseEnter}
+                        onMouseLeave={this.props.onMouseLeave}
+                        onContextMenu={this.props.onContextMenu}
+                    >
+                        {this.props.children}
+                    </div>);
+                }
+            }
+
+            return (<Container
+                component={Example}
+                onClick={() => console.log('clicked')}
+                onMidClick={() => console.log('mid clicked')}
+                onRightClick={() => console.log('right clicked')}
+                holds={{
+                    'mouse1': {
+                        duration: 1000,
+                        name: 'Continue',
+                        action: () => console.log('left holded - continue'),
+                    },
+                    'a': {
+                        duration: 3000,
+                        name: 'Abandon',
+                        action: () => console.log('a holded - Abandon'),
+                    },
+                }}
+                render={<div>
+                    Hello World
+                </div>}
+            >
+                {createChance().sentence()}
+            </Container>);
+        })()}
+    </div>
 </Playground>

@@ -10,27 +10,27 @@ import { createChance } from "./mock/chance";
 
 <Playground>
     <div style={{backgroundColor: 'lightblue'}}>
-    {(() => {
-        class Example extends React.Component {
-            render() {
-                return (<div
-                    onMouseEnter={this.props.onMouseEnter}
-                    onMouseLeave={this.props.onMouseLeave}
-                    onContextMenu={this.props.onContextMenu}
-                >
-                    {this.props.children}
-                </div>);
+        {(() => {
+            class Example extends React.Component {
+                render() {
+                    return (<div
+                        onMouseEnter={this.props.onMouseEnter}
+                        onMouseLeave={this.props.onMouseLeave}
+                        onContextMenu={this.props.onContextMenu}
+                    >
+                        {this.props.children}
+                    </div>);
+                }
             }
-        }
 
-        return (<Collector
-            component={Example}
-            onClick={() => console.log('clicked')}
-            onMidClick={() => console.log('mid clicked')}
-            onRightClick={() => console.log('right clicked')}
-        >
-        {createChance().sentence()}
-        </Collector>);
-    })()}
+            return (<Collector
+                component={Example}
+                onClick={() => console.log('clicked')}
+                onMidClick={() => console.log('mid clicked')}
+                onRightClick={() => console.log('right clicked')}
+            >
+                {createChance().sentence()}
+            </Collector>);
+        })()}
     </div>
 </Playground>
