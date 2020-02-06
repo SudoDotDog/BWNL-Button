@@ -4,9 +4,9 @@
  * @description Image
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const ImageWidgetStyleBase: JSSStyle = {
+const ImageWidgetStyleBase: Styles = {
 
     wrapper: {
         display: 'flex',

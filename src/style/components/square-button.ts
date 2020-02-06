@@ -4,9 +4,9 @@
  * @description SquareButton
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const SquareButtonStyleBase: JSSStyle = {
+const SquareButtonStyleBase: Styles = {
 
     container: {
         borderWidth: '3px',

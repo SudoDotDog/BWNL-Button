@@ -4,7 +4,7 @@
  * @description Operation
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
 const operationProgressKeyframes = {
 
@@ -16,7 +16,7 @@ const operationProgressKeyframes = {
     },
 };
 
-const OperationWidgetStyleBase: JSSStyle = {
+const OperationWidgetStyleBase: Styles = {
 
     wrapper: {
         minHeight: '32px',

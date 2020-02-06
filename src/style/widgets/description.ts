@@ -4,9 +4,9 @@
  * @description Description
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const DescriptionWidgetStyleBase: JSSStyle = {
+const DescriptionWidgetStyleBase: Styles = {
 
     title: {
         fontWeight: 'bold',

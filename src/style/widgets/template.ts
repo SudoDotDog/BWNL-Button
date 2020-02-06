@@ -4,9 +4,9 @@
  * @description Template
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const TemplateWidgetStyleBase: JSSStyle = {
+const TemplateWidgetStyleBase: Styles = {
 
 };
 

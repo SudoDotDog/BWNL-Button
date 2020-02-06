@@ -4,9 +4,9 @@
  * @description Square
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const SquareStyleBase: JSSStyle = {
+const SquareStyleBase: Styles = {
 
     wrapper: {
         boxSizing: 'border-box',

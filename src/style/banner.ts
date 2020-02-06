@@ -4,9 +4,9 @@
  * @description Banner
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const BannerStyleBase: JSSStyle = {
+const BannerStyleBase: Styles = {
 
     wrapper: {
         minWidth: '256px',

@@ -4,9 +4,9 @@
  * @description Title
  */
 
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const TitleWidgetStyleBase: JSSStyle = {
+const TitleWidgetStyleBase: Styles = {
 
     wrapper: {
         display: 'flex',
