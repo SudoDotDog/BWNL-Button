@@ -22,6 +22,9 @@ app
 .docz
 .DS_Store
 
+# lock
+yarn.lock
+
 # nyc test coverage
 .nyc_output
 
