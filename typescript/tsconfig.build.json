@@ -1,12 +1,14 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
+        "jsx": "react",
+        "strict": true,
         "alwaysStrict": true,
+        "strictNullChecks": true,
         "declaration": true,
         "downlevelIteration": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "jsx": "react",
         "outDir": "../app",
         "lib": [
             "dom",
@@ -22,12 +24,11 @@
         "noImplicitThis": true,
         "removeComments": true,
         "resolveJsonModule": true,
-        "strict": true,
-        "strictNullChecks": true,
         "target": "es6"
     },
     "exclude": [
         "../node_modules",
+        "../script",
         "../test"
     ],
     "include": [
