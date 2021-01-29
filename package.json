@@ -20,7 +20,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@sudoo/jss": "^1.4.0"
+    "@sudoo/jss": "^1.7.1"
   },
   "devDependencies": {
     "@sudoo/io": "^1.8.0",
